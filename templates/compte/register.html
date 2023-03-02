@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+
+      <div class="container py-5">
+        <div class="col-md-8 offset-2">
+          <div class="text-center">
+        <h1 class="text-danger">Creer un nouveau compte</h1>
+      </div>
+        
+        <div class="card mb-4" id="forms">
+          <div class="card-body">
+
+            {% include 'compte/messages.html' %}
+            <form method="post" action="">
+              <fieldset>
+                {% csrf_token %}
+
+                {% for fm in form %}
+                    <div class="form-group">
+                        {{fm.label_tag}}
+                        {{fm}}
+                    </div>
+                {% endfor %}
+                <div class="text-center">
+                <button class="btn btn-primary" type="submit">Enregister</button>
+              </div>
+            </form>
+            <hr>
+            Deja inscrire? <a href="{% url 'login' %}">Log In </a>
+            
+          </div>
+        </div>
+        </div>       
+      </div>
+{% endblock content %}

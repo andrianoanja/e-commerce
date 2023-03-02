@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block content %}
+  <div class="row">
+
+    {% for produit in produits %}
+    <div class="col-md-3">
+        <div class="card">
+            <a class="btn btn-default" href="{% url 'produit' produit.id %}"> <img  src="{{ produit.image.url }}" alt="" class="card-img-top" style="max-width: 250px; max-height: 250px;"></a>
+            <div class="card-body">
+                <div class="card-title">{{produit.designation}}</div>
+                <div class="card-text" style="color: red;">Ar {{produit.prix}}</div>
+                <a class="btn btn-primary" href="{% url 'produit' produit.id %}">Voir <i class="fa fa-eye"></i></a>
+                <a class="btn btn-success" href="{% url 'ajout-panier' produit.id %}"> Ajouter <i class="fa fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+   </div>
+        {% endblock content %}

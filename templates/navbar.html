@@ -1,0 +1,62 @@
+
+<header class="header bg-white">
+    <div class="container px-0 px-lg-3">
+      <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="{% url 'index' %}"><span class="font-weight-bold text-uppercase text-dark">E-commerce</span></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link active" href="{% url 'index' %}">Accueil</a>
+            </li>
+
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+
+              <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
+                    {% if categories %}
+                         {% for x in categories %}
+                        <a class="dropdown-item border-0 transition-link" href="{% url 'categori' x.id %}">{{x.categorie}}</a>
+                        {% endfor %}
+                     {% endif %}
+                <hr>
+                <a class="dropdown-item border-0 transition-link" href="{% url 'categories' %}">All Categories</a>
+
+             </div>
+
+            </li>
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link" href="{% url 'produit' %}">Produit</a>
+            </li>
+            <li class="nav-item">
+              <!-- Link--><a class="nav-link" href="">Contact</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            {% if request.user.is_authenticated %}
+            {% if user.panier %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'panier' %}"> <i class="fas fa-dolly-flatbed mr-1 text-white"></i><i class="fa fa-shopping-cart"></i><small class="badge btn-primary rounded-pill"> {{ user.panier.articles.count}}</small></a></li>
+              {% endif %}
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt mr-1 text-gray"></i><img src="{{user.profile.photo.url}}" class="rounded-circle" height="30">Mon Compte</a></a>
+
+              <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
+
+                  <a class="dropdown-item border-0 transition-link" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile </a>
+                  {% if user.panier %}
+                  <a class="dropdown-item border-0 transition-link" href="{% url 'panier' %}"><i class="fa fa-shopping-cart"></i> Panier <small class="badge btn-primary rounded-pill">{{ user.panier.articles.count}}</small> </a>
+                  {% endif %}
+                  <a class="dropdown-item border-0 transition-link" href="{% url 'password-change' %}">Changer le mot de passe</a>
+
+                <hr>
+                <a class="dropdown-item border-0 transition-link" href="{% url 'logout' %}">Déconnexion</a>
+
+            </li>
+          </li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Se connecter</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">S'inscrire</a></li>
+          {% endif %}
+        </ul>
+        </div>
+      </nav>
+    </div>
+  </header>

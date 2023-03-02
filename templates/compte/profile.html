@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    <div class="text-center">
+    <img src="{{user.profile.photo.url}}" class="rounded-circle" height="200"> 
+    <h3> {{user.last_name}}</h3>  <h3>{{user.first_name}}</h3>
+    <h3 class="text-danger">@{{user.username}}</h3>
+</div>
+    <a href="" class="save btn btn-primary">Modifier le profile</a>
+    {% endblock content %}

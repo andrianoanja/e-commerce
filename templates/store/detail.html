@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div>
+                <img src="{{ produit.image.url }}" style="width:500px; height:500px" alt="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-warning display-3">
+                {{ produit.designation }}
+            </div>
+            <div class="text-danger ">
+               Prix: Ar {{ produit.prix }}
+            </div>
+            <div >
+                {{ produit.description }}
+            </div>
+            <a href="{% url 'ajout-panier' produit.id %}"><button class="btn btn-primary">Ajouter dans le panier  <i class="fa fa-shopping-cart"></i></button></a>
+        </div>
+    </div>
+
+{% endblock %}

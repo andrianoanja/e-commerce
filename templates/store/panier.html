@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <div class="text-right">
+    <a href="{% url 'suprimer-panier' %}" class="save btn btn-danger">Annuler l'achat</a>
+    </div>
+    <hr>
+<div class="row">
+    <div class="col-lg-8 mb-4 mb-lg-0">
+        <div class="table-responsive">
+                <table class="table">
+                  <thead class="bg-light">
+                    <tr>
+                      <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Produit</strong></th>
+                      <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Prix</strong></th>
+                      <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Quantité</strong></th>
+                      <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Total</strong></th>
+                      <th class="border-0" scope="col"> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  {% for x in articles %}
+                    <tr>
+                      <th class="pl-0 border-0" scope="row">
+                        <div class="media align-items-center">
+                            <a class="reset-anchor d-block animsition-link" href=""><img src="{{ x.produit.image.url }}" alt="" width="70"/></a>
+                          <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="{% url 'produit' x.produit.id %}">{{ x.produit.designation }}</a></strong></div>
+                        </div>
+                      </th>
+                      <td class="align-middle border-0">
+                        <p class="mb-0 small">Ar {{ x.produit.prix }}</p>
+                      </td>
+                      <td class="align-middle border-0">
+                        <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantité</span>
+                            <a href="{% url 'moins' x.id  %}" class="dec-btn p-0 ml-2"><i class="fa fa-minus"></i></a><input class="form-control border-0" type="text" value="{{ x.quantite }}"/><a href="{% url 'plus' x.id  %}" class="inc-btn p-0"><i class="fa fa-plus"></i></a>
+                        </div>
+                      </td>
+                      <td class="align-middle border-0">
+                        <p class="mb-0 small">Ar {{x.total}}</p>
+                      </td>
+                      <td class="align-middle border-0">
+                          <a class="save btn btn-danger" href="{% url 'suprimer-article' x.id %}"><i class="fa fa-trash-o"></i></a>
+                      </td>
+                    </tr>
+                    
+                    {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+              </div> 
+              <div class="col-lg-4">
+              <div class="card border-0 rounded-0 p-lg-4 bg-light">
+                <div class="card-body">
+                  <h5 class="text-uppercase mb-4">Net à payer</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Total </strong><span class="text-muted small">AR</span></li>
+                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Charge</strong><span class="text-muted small">+  AR</span></li>
+                    <li class="border-bottom my-2"></li>
+                    <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Net à payer</strong><span>Ar</span></li>
+                    <li>
+                     </ul>   
+                     </div>
+                     </div>
+                     </div>
+          <div class="text-left">
+            <a href="{% url 'index' %}" class="save btn btn-outline-dark"><i class="fa fa-long-arrow-alt-left mr-2"> </i>Continue shopping</a>
+          </div>
+          </div>
+          <hr>
+    {% endblock content %}

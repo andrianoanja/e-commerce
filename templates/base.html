@@ -1,0 +1,75 @@
+
+{% load static %}
+  
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>E-commerce</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/font-awesome.min.css' %}">
+
+    <link rel="shortcut icon" href="">
+  </head>
+  {% include 'navbar.html' %}
+  <body>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="container">
+
+      {% block content %}
+
+      {% endblock content %}
+</div>
+</div>
+</div>
+</body>
+<footer class="bg-dark text-white">
+  <div class="container py-4">
+    <div class="row py-5">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <h6 class="text-uppercase mb-3">Menu</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a class="footer-link" href="#">Acceuil</a></li>
+          <li><a class="footer-link" href="#">Produit</a></li>
+          <li><a class="footer-link" href="#">S'inscrire</a></li>
+          <li><a class="footer-link" href="#">Connexion</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-3 mb-md-0">
+        <h6 class="text-uppercase mb-3">Categories</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a class="footer-link" href="#">Ordinateur</a></li>
+          <li><a class="footer-link" href="#">Telephone</a></li>
+          <li><a class="footer-link" href="#">Tablette</a></li>
+          <li><a class="footer-link" href="#">Apparail photo</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-uppercase mb-3">Social media</h6>
+        <ul class="list-unstyled mb-0">
+          <li><a class="footer-link" href="#">Twitter</a></li>
+          <li><a class="footer-link" href="#">Instagram</a></li>
+          <li><a class="footer-link" href="#">Facebook</a></li>
+          <li><a class="footer-link" href="#">LinkDin</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-top pt-4" style="border-color: #1d1d1d !important">
+      <div class="row">
+        <div class="col-lg-6">
+          <p class="small text-muted mb-0">&copy; 2022 All rights reserved.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</html>
